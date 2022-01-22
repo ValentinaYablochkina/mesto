@@ -1,0 +1,13 @@
+.photo-grid__card {
+  margin: 0;
+  background-color: #FFF;
+  border-radius: 10px;
+  width: 282px;
+  height: 361px;
+}
+
+@media screen and (max-width: 879px) {
+  .photo-grid__card {
+    margin: 0 auto;
+  }
+}
