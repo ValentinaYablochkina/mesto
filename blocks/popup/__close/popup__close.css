@@ -1,7 +1,7 @@
 .popup__close {
   position: absolute;
-  top: 155px;
-  right: 34%;
+  top: -28px;
+  right: -28px;
   visibility: hidden;
 }
 
@@ -10,27 +10,9 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1280px) {
-  .popup__close {
-    right: 30%;
-  }  
-}
-
-@media screen and (max-width: 1024px) {
-  .popup__close {
-    right: 25%;
-  }  
-}
-
-@media screen and (max-width: 768px) {
-  .popup__close {
-    right: 20%;
-  }  
-}
-
 @media screen and (max-width: 480px) {
   .popup__close {
-    top: 87px;
-    right: 19px;
+    top: -26px;
+    right: 0px
   }
 }

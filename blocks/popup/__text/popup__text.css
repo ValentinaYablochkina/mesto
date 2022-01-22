@@ -13,7 +13,7 @@
   border-right: none;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 510px) {
   .popup__text {
     width: 238px;
     height: 27px;
