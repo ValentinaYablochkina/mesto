@@ -1,0 +1,8 @@
+.button-style {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}

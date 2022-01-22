@@ -1,0 +1,37 @@
+.popup {
+  max-width: 430px;
+  max-height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 195px;
+  left: 35%;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .popup {
+   left: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popup {
+   left: 20%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .popup {
+   left: 10%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup {
+    width: 282px;
+    height: 322px;
+    top: 123px;
+    left: 19px;
+  }
+}

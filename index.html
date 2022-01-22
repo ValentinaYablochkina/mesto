@@ -18,13 +18,17 @@
         <div class="profile__button">
           <p class="profile__name">Жак-Ив Кусто</p>
           <div class="profile__edit-button-border">
-            <img class="profile__edit-Button" src="images/pen.svg">
+            <button class="button-style" type="button">
+              <img class="profile__edit-Button" src="images/pen.svg">
+            </button>
           </div>
         </div>
         <p class="profile__profession">Исследователь океана</p>
       </div>
       <div class="profile__add-Button-border">
+        <button class="button-style" type="button">
           <img class="profile__add-Button" src="images/plus.svg" alt="Кнопка добавления">
+        </button>
       </div>
     </section>
     <section class="photo-grid">
@@ -32,48 +36,74 @@
         <img class="photo-grid__image" src="images/Mask Group (5).png" alt="Карачаевск">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Карачаевск</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
       <figure class="photo-grid__card">
         <img class="photo-grid__image" src="images/Mask Group (3).png" alt="Гора Эльбрус">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Гора Эльбрус</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
       <figure class="photo-grid__card">
         <img class="photo-grid__image" src="images/Mask Group (2).png" alt="Домбай">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Домбай</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
       <figure class="photo-grid__card">
         <img class="photo-grid__image" src="images/Mask Group (3).png" alt="Гора Эльбрус">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Гора Эльбрус</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
       <figure class="photo-grid__card">
         <img class="photo-grid__image" src="images/Mask Group (2).png" alt="Домбай">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Домбай</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
       <figure class="photo-grid__card">
         <img class="photo-grid__image" src="images/Mask Group (5).png" alt="Карачаево-Черкессия">
         <div class="photo-grid__underimage">
           <figcaption class="photo-grid__text">Карачаево-Черкессия</figcaption>
-          <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="button-style" type="button">
+            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          </button>
         </div>
       </figure>
     </section>
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
-    </footer> 
+    </footer>
+    <button class="popup__close button-style">
+      <img class="popup__close-image" src="images/Close Icon.svg" alt="Кнопка закрытия окна">
+    </button>
+    <div class="popup">
+      <h3 class="popup__heading">Редактировать профиль</h3>
+      <form class="popup__form">
+        <p><input type="text" class="popup__text" id="name" value="Жак-Ив Кусто"></p>
+        <p><input type="text" class="popup__text" id="profession" value="Исследователь океана"></p>
+        <button class="popup__save button-style" type="submit">
+          <p class="popup__save-text">Сохранить</p>
+        </button>  
+      </form>
+    </div>
   </main>
+<script src="scripts/index.js"></script>  
 </body>
 </html>
