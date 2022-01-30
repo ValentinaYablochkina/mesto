@@ -1,7 +1,6 @@
 .photo-grid__underimage {
-  margin: 25px 15px 0 21px;
+  margin: 25px 15px 31px 21px;
   width: 246px;
-  height: 28px;
   display: flex;
   justify-content: space-between;
 }

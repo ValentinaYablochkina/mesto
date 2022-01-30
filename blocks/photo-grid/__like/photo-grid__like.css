@@ -1,6 +1,13 @@
 .photo-grid__like {
-  width: 22px;
+  min-width: 22px;
   height: 19px;
+  background-image: url(../../../images/heart.svg);
+  background-size: auto;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  margin: 0;
 }
 
 .photo-grid__like:hover {
@@ -9,6 +16,6 @@
 }
 
 .photo-grid__like:active {
-  background-image: url(../../../images/BlackHeart.png);
+  background-image: url(../../../images/Blackheart.svg);
   opacity: 1;
 }

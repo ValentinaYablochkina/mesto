@@ -16,28 +16,21 @@
       <img class="profile__avatar" src="images/Avatar.png" alt="Аватар">
       <div class="profile__info">
         <div class="profile__button">
-          <h2 class="profile__name">Жак-Ив Кусто</h2>
-          <div class="profile__edit-button-border">
-            <button class="button-style" type="button">
-              <img class="profile__edit-Button" src="images/pen.svg" alt="Редактировать">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button">
             </button>
-          </div>
         </div>
         <p class="profile__profession">Исследователь океана</p>
       </div>
-      <div class="profile__add-Button-border">
-        <button class="button-style" type="button">
-          <img class="profile__add-Button" src="images/plus.svg" alt="Кнопка добавления">
+        <button class="profile__add-button" type="button">
         </button>
-      </div>
     </section>
     <section class="photo-grid">
       <div class="photo-grid__card">
         <img class="photo-grid__image" src="images/Карачаевск.png" alt="Карачаевск">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Карачаевск</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="photo-grid__like" type="button">
           </button>
         </div>
       </div>
@@ -45,8 +38,7 @@
         <img class="photo-grid__image" src="images/Эльбрус.png" alt="Гора Эльбрус">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Гора Эльбрус</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="photo-grid__like" type="button">
           </button>
         </div>
       </div>
@@ -54,8 +46,7 @@
         <img class="photo-grid__image" src="images/Домбай.png" alt="Домбай">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Домбай</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="photo-grid__like" type="button">
           </button>
         </div>
       </div>
@@ -63,8 +54,7 @@
         <img class="photo-grid__image" src="images/Эльбрус.png" alt="Гора Эльбрус">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Гора Эльбрус</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="photo-grid__like" type="button">
           </button>
         </div>
       </div>
@@ -72,8 +62,7 @@
         <img class="photo-grid__image" src="images/Домбай.png" alt="Домбай">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Домбай</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
+          <button class="photo-grid__like" type="button">
           </button>
         </div>
       </div>
@@ -81,27 +70,25 @@
         <img class="photo-grid__image" src="images/Карачаевск.png" alt="Карачаево-Черкессия">
         <div class="photo-grid__underimage">
           <h2 class="photo-grid__text">Карачаево-Черкессия</h2>
-          <button class="button-style" type="button">
-            <img class="photo-grid__like" src="images/heart.svg" alt="Сердце">
-          </button>
+          <button class="photo-grid__like" type="button"></button>
         </div>
       </div>
     </section>
-    <footer class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
-    </footer>
-    <div class="popup">
-      <button class="popup__close button-style">
-        <img class="popup__close-image" src="images/CloseIcon.svg" alt="Кнопка закрытия окна">
-      </button>
+  </main>
+  <footer class="footer">
+    <p class="footer__text">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
-      <form class="popup__form">
-        <p><input type="text" class="popup__text" id="name" value="Жак-Ив Кусто"></p>
-        <p><input type="text" class="popup__text" id="profession" value="Исследователь океана"></p>
-        <p class="popup__save-text"><button class="popup__save button-style" type="submit">Сохранить</button></p>
+      <form class="popup__form" type="name">
+        <input type="text" class="popup__text" id="name" value="Жак-Ив Кусто" type="name">
+        <input type="text" class="popup__text" id="profession" value="Исследователь океана" type="name">
+        <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
-  </main>
+  </div>
 <script src="scripts/index.js"></script>  
 </body>
 </html>

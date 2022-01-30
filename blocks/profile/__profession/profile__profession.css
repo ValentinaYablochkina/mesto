@@ -5,4 +5,12 @@
     line-height: auto;
     font-weight: 400;
     color: #FFF;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+
+   @media screen and (max-width: 320px) {
+    .profile__profession {
+        font-size: 14px;
+       }  
    }
