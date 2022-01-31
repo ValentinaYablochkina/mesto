@@ -8,17 +8,17 @@ let profileProfession = document.querySelector('.profile__profession')
 let nameInput = document.getElementById('name')
 let professionInput = document.getElementById('profession')
 
-function OpenPopup() {
+function openPopup() {
   popup.classList.add('popup_opened')
   nameInput.value = profileName.textContent
   professionInput.value = profileProfession.textContent
 }
 
-function ClosePopup() {
+function closePopup() {
   popup.classList.remove('popup_opened')
 }
 
-function SubmitForm(evt) {
+function submitForm(evt) {
   evt.preventDefault()
   profileName.textContent = nameInput.value
   profileProfession.textContent = professionInput.value
@@ -26,6 +26,6 @@ function SubmitForm(evt) {
 }
 
 
-profileInfoOpenPopupButton.addEventListener('click', OpenPopup)
-popupCloseButton.addEventListener('click', ClosePopup)
-popupForm.addEventListener('submit', SubmitForm)
+profileInfoOpenPopupButton.addEventListener('click', openPopup)
+popupCloseButton.addEventListener('click', closePopup)
+popupForm.addEventListener('submit', submitForm)
