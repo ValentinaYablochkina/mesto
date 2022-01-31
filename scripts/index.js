@@ -22,7 +22,7 @@ function submitForm(evt) {
   evt.preventDefault()
   profileName.textContent = nameInput.value
   profileProfession.textContent = professionInput.value
-  ClosePopup()
+  closePopup()
 }
 
 
