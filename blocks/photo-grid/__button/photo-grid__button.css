@@ -1,0 +1,18 @@
+.photo-grid__button {
+    width: 18px;
+    height: 19px;
+    z-index: 3;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-image: url(../../../images/Trash1.svg);
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+.photo-grid__button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
