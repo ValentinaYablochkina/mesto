@@ -1,8 +1,8 @@
 .popup__close-image {
     position: relative;
     align-self: flex-end;
-    top: -8px;
-    right: -40px;
+    top: 8px;
+    right: -8px;
     font: inherit;
     color: inherit;
     background-color: transparent;
