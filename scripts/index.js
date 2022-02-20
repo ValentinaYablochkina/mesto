@@ -61,11 +61,11 @@ function openPopupImage(evt) {
   openPopup(openImage)
   image.src = evt.target.closest('.photo-grid__image').src
   image.alt = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
-  imageSign.innerText = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
+  imageSign.textContent = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
 }
 
 
-function submitForm(evt) {
+function submitFormUsersData(evt) {
   evt.preventDefault()
   profileName.textContent = nameInput.value
   profileProfession.textContent = professionInput.value
@@ -111,6 +111,7 @@ function submitFormCard(evt) {
 closeImage.addEventListener('click', function () {
   closePopup(openImage);
 })
+
 popupFormMesto.addEventListener('submit', submitFormCard)
 profileInfoOpenPopupButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent
@@ -126,6 +127,6 @@ popupCloseButton.addEventListener('click', function () {
 popupCloseMestoButton.addEventListener('click', function () {
   closePopup(popupMesto);
 })
-popupForm.addEventListener('submit', submitForm)
+popupForm.addEventListener('submit', submitFormUsersData)
 
 render()
