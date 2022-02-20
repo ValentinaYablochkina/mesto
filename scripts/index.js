@@ -1,26 +1,26 @@
-let profileInfoOpenPopupButton = document.querySelector('.profile__edit-button')
-let popup = document.querySelector('.popup')
-let popupCloseButton = document.querySelector('.popup__close')
-let popupCloseMestoButton = document.querySelector('.popup-mesto__close')
-let popupSave = document.querySelector('.popup__save')
-let popupForm = document.querySelector('.popup__form')
-let profileName = document.querySelector('.profile__name')
-let profileProfession = document.querySelector('.profile__profession')
-let nameInput = document.getElementById('name')
-let professionInput = document.getElementById('profession')
-let addMestoOpenPopupButton = document.querySelector('.profile__add-button')
-let popupMesto = document.querySelector('.popup-mesto')
-let photoGrid = document.querySelector('.photo-grid')
-let addButton = document.querySelector('.profile__add-button')
-let template = document.querySelector('.item__template').content
-let placeInput = document.getElementById('place')
-let imageInput = document.getElementById('image')
-let popupFormMesto = document.querySelector('.popup-mesto__form')
-let popupSaveMesto = document.querySelector('.popup-mesto__save')
-let openImage = document.querySelector('.popup-image')
-let closeImage = document.querySelector('.popup-image__close')
-let image = document.querySelector('.popup-image__picture')
-let imageSign = document.querySelector('.popup-image__sign')
+const profileInfoOpenPopupButton = document.querySelector('.profile__edit-button')
+const popup = document.querySelector('.popup')
+const popupCloseButton = document.querySelector('.popup__close')
+const popupCloseMestoButton = document.querySelector('.popup-mesto__close')
+const popupSave = document.querySelector('.popup__save')
+const popupForm = document.querySelector('.popup__form')
+const profileName = document.querySelector('.profile__name')
+const profileProfession = document.querySelector('.profile__profession')
+const nameInput = document.getElementById('name')
+const professionInput = document.getElementById('profession')
+const addMestoOpenPopupButton = document.querySelector('.profile__add-button')
+const popupMesto = document.querySelector('.popup-mesto')
+const photoGrid = document.querySelector('.photo-grid')
+const addButton = document.querySelector('.profile__add-button')
+const template = document.querySelector('.item__template').content
+const placeInput = document.getElementById('place')
+const imageInput = document.getElementById('image')
+const popupFormMesto = document.querySelector('.popup-mesto__form')
+const popupSaveMesto = document.querySelector('.popup-mesto__save')
+const openImage = document.querySelector('.popup-image')
+const closeImage = document.querySelector('.popup-image__close')
+const image = document.querySelector('.popup-image__picture')
+const imageSign = document.querySelector('.popup-image__sign')
 
 const initialCards = [
   {
@@ -49,28 +49,27 @@ const initialCards = [
   }
 ];
 
-function openPopup() {
+function openPopup(popup) {
   popup.classList.add('popup_opened')
-  nameInput.value = profileName.textContent
-  professionInput.value = profileProfession.textContent
 }
 
-function openPopupMesto() {
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
+}
+
+function openPopupMesto(popupMesto) {
   popupMesto.classList.add('popup_opened')
+}
+
+function closePopupMesto(popupMesto) {
+  popupMesto.classList.remove('popup_opened')
 }
 
 function openPopupImage(evt) {
   openImage.classList.add('popup_opened')
   image.src = evt.target.closest('.photo-grid__image').src
+  image.alt = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
   imageSign.innerText = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
-}
-
-function closePopup() {
-  popup.classList.remove('popup_opened')
-}
-
-function closePopupMesto() {
-  popupMesto.classList.remove('popup_opened')
 }
 
 function closePopupImage() {
@@ -81,21 +80,8 @@ function submitForm(evt) {
   evt.preventDefault()
   profileName.textContent = nameInput.value
   profileProfession.textContent = professionInput.value
-  closePopup()
+  closePopup(popup)
 }
-
-function submitFormCard(evt) {
-  evt.preventDefault(); 
-  addCard()
-  closePopupMesto()
-}
-
-function addListeners(el) {
-  el.querySelector('.photo-grid__button').addEventListener('click', deleteCard)
-  el.querySelector('.photo-grid__like').addEventListener('click', addLike)
-  el.querySelector('.photo-grid__image').addEventListener('click', openPopupImage)
-}
-
 
 function deleteCard(evt) {
   evt.target.closest('.photo-grid__card').remove()
@@ -105,35 +91,50 @@ function addLike(evt) {
   evt.target.closest('.photo-grid__like').classList.toggle('photo-grid__like_active')
 }
 
-function render() {
-  initialCards.forEach(renderCard)
+function addListeners(el) { 
+  el.querySelector('.photo-grid__button').addEventListener('click', deleteCard) 
+  el.querySelector('.photo-grid__like').addEventListener('click', addLike) 
+  el.querySelector('.photo-grid__image').addEventListener('click', openPopupImage) 
+} 
+
+function createCard(name, link) { 
+  const newCard = template.cloneNode(true)
+  newCard.querySelector('.photo-grid__text').textContent = name
+  newCard.querySelector('.photo-grid__image').src = link
+  newCard.querySelector('.photo-grid__image').alt = name 
+  addListeners(newCard) 
+  return newCard
 }
 
-function renderCard(initialCards) {
-  const newCard = template.cloneNode(true)
-  newCard.querySelector('.photo-grid__text').innerText = initialCards.name
-  newCard.querySelector('.photo-grid__image').src = initialCards.link
-  newCard.querySelector('.photo-grid__image').alt = initialCards.name
-  addListeners(newCard)
-  photoGrid.appendChild(newCard)
+function render() { 
+  initialCards.forEach((initialCards) => {
+    photoGrid.prepend(createCard(initialCards.name, initialCards.link))
+  })
 }
 
-function addCard() {
-  const newCard = template.cloneNode(true)
-  newCard.querySelector('.photo-grid__text').innerText = placeInput.value
-  newCard.querySelector('.photo-grid__image').src = imageInput.value
-  newCard.querySelector('.photo-grid__image').alt = placeInput.value
-  addListeners(newCard)
-  photoGrid.prepend(newCard)
+function submitFormCard(evt) {
+  evt.preventDefault()
+  photoGrid.prepend(createCard([placeInput.value], [imageInput.value]))
+  closePopupMesto(popupMesto)
+  popupFormMesto.reset()
 }
 
 closeImage.addEventListener('click', closePopupImage)
 popupFormMesto.addEventListener('submit', submitFormCard)
-profileInfoOpenPopupButton.addEventListener('click', openPopup)
-addMestoOpenPopupButton.addEventListener('click', openPopupMesto)
-popupCloseButton.addEventListener('click', closePopup)
-popupCloseMestoButton.addEventListener('click', closePopupMesto)
+profileInfoOpenPopupButton.addEventListener('click', function () {
+  nameInput.value = profileName.textContent
+  professionInput.value = profileProfession.textContent
+  openPopup(popup);
+})
+addMestoOpenPopupButton.addEventListener('click', function () {
+  openPopupMesto(popupMesto);
+})
+popupCloseButton.addEventListener('click', function () {
+  closePopup(popup);
+})
+popupCloseMestoButton.addEventListener('click', function () {
+  closePopupMesto(popupMesto);
+})
 popupForm.addEventListener('submit', submitForm)
+
 render()
-
-
