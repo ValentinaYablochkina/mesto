@@ -57,24 +57,13 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened')
 }
 
-function openPopupMesto(popupMesto) {
-  popupMesto.classList.add('popup_opened')
-}
-
-function closePopupMesto(popupMesto) {
-  popupMesto.classList.remove('popup_opened')
-}
-
 function openPopupImage(evt) {
-  openImage.classList.add('popup_opened')
+  openPopup(openImage)
   image.src = evt.target.closest('.photo-grid__image').src
   image.alt = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
   imageSign.innerText = evt.target.closest('.photo-grid__card').querySelector('.photo-grid__text').textContent
 }
 
-function closePopupImage() {
-  openImage.classList.remove('popup_opened')
-}
 
 function submitForm(evt) {
   evt.preventDefault()
@@ -115,11 +104,13 @@ function render() {
 function submitFormCard(evt) {
   evt.preventDefault()
   photoGrid.prepend(createCard([placeInput.value], [imageInput.value]))
-  closePopupMesto(popupMesto)
+  closePopup(popupMesto)
   popupFormMesto.reset()
 }
 
-closeImage.addEventListener('click', closePopupImage)
+closeImage.addEventListener('click', function () {
+  closePopup(openImage);
+})
 popupFormMesto.addEventListener('submit', submitFormCard)
 profileInfoOpenPopupButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent
@@ -127,13 +118,13 @@ profileInfoOpenPopupButton.addEventListener('click', function () {
   openPopup(popup);
 })
 addMestoOpenPopupButton.addEventListener('click', function () {
-  openPopupMesto(popupMesto);
+  openPopup(popupMesto);
 })
 popupCloseButton.addEventListener('click', function () {
   closePopup(popup);
 })
 popupCloseMestoButton.addEventListener('click', function () {
-  closePopupMesto(popupMesto);
+  closePopup(popupMesto);
 })
 popupForm.addEventListener('submit', submitForm)
 
