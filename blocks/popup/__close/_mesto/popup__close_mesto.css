@@ -1,4 +1,4 @@
-.popup-mesto__close {
+.popup__close_mesto {
     position: relative;
     top: -40px;
     left: 438px;
@@ -8,12 +8,12 @@
     border: none;
     width: 32px;
     height: 32px;
-    background-image: url(../../../images/CloseIcon.svg);
+    background-image: url(../../../../images/CloseIcon.svg);
     background-position: center;
     background-size: cover;
   }
   
-  .popup-mesto__close:hover {
+  .popup__close_mesto:hover {
     opacity: 0.6;
     cursor: pointer;
   }

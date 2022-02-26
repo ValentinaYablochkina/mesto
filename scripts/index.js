@@ -1,7 +1,7 @@
 const profileInfoOpenPopupButton = document.querySelector('.profile__edit-button') 
 const popup = document.querySelector('.popup') 
 const popupCloseButton = document.querySelector('.popup__close') 
-const popupCloseMestoButton = document.querySelector('.popup-mesto__close') 
+const popupCloseMestoButton = document.querySelector('.popup__close_mesto') 
 const popupSave = document.querySelector('.popup__save') 
 const popupForm = document.querySelector('.popup__form') 
 const profileName = document.querySelector('.profile__name') 
@@ -22,7 +22,7 @@ const closeImage = document.querySelector('.popup-image__close')
 const image = document.querySelector('.popup-image__picture') 
 const imageSign = document.querySelector('.popup-image__sign')
 const popupContainer = document.querySelector('.popup__container')
-const popupContainerMesto = document.querySelector('.popup-mesto__container')
+const popupContainerMesto = document.querySelector('.popup__container_mesto')
 const popupContainerImage = document.querySelector('.popup-image__container')
 
 
