@@ -35,9 +35,12 @@
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
-      <form class="popup__form" name="form">
-        <input type="text" class="popup__text" id="name" placeholder="Имя" value="Жак-Ив Кусто" name="Name">
-        <input type="text" class="popup__text" id="profession" placeholder="Профессиональная деятельность" value="Исследователь океана" name="Profession">
+      <form class="popup__form"  name="form" novalidate>
+        <input type="text" class="popup__text" required minlength="2" maxlength="40" id="name" placeholder="Имя" value="Жак-Ив Кусто" name="Name">
+        <span id="error-name" class="error"></span>
+        <input type="text" class="popup__text" required minlength="2" maxlength="200" id="profession" placeholder="Профессиональная деятельность" 
+          value="Исследователь океана" name="Profession">
+        <span id="error-profession" class="error"></span>
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -46,10 +49,12 @@
     <div class="popup-mesto__container">
       <button class="popup-mesto__close" type="button"></button>
       <h3 class="popup-mesto__heading">Новое место</h3>
-      <form class="popup-mesto__form" name="form">
-        <input type="text" class="popup-mesto__text" id="place" placeholder="Название" name="Place" value="">
-        <input type="url" class="popup-mesto__text" id="image" placeholder="Ссылка на картинку" name="image" value="">
-        <button class="popup-mesto__save" type="submit">Создать</button>
+      <form class="popup__form popup-mesto__form" id="form" name="form" novalidate>
+        <input type="text" class="popup__text popup__text_error" required minlength="2" maxlength="30" id="place" placeholder="Название" name="Place" value="">
+        <span id="error-place" class="error"></span>
+        <input type="url" class="popup__text popup__text_error" required id="image" placeholder="Ссылка на картинку" name="image" value="">
+        <span id="error-image" class="error"></span>
+        <button class="popup__save" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -72,7 +77,8 @@
         </button>
       </div>
     </div>
-  </template>  
+  </template>
+  <script src="scripts/validate.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>
