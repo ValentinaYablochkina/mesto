@@ -1,7 +1,7 @@
 .popup__close {
   position: relative;
   top: -40px;
-  left: 438px;
+  right: -40px;
   font: inherit;
   color: inherit;
   background-color: transparent;
@@ -22,7 +22,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    top: -36px;
-    left: 262px;
+    top: -28px;
+    right: 0px;
   }
 }
