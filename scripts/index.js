@@ -27,7 +27,6 @@ function openPopup(popupEditProfile) {
   let button = popupEditProfile.querySelector('.popup__save')
   let input = popupEditProfile.querySelector('.popup__text')
   checkButtonValidity({inactiveButtonClass: 'popup__save_error'}, form, button)
-  checkInputValidity({inputErrorClass:'popup__text_error'}, {errorClass: 'error'}, form, input)
   document.addEventListener('keydown', closeByEscape)
   popupEditProfile.reset()
 } 
