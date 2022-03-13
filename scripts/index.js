@@ -1,9 +1,10 @@
 const profileInfoOpenPopupButton = document.querySelector('.profile__edit-button') 
-const popupEditProfile = document.querySelector('.popup') 
+const popupEditProfile = document.querySelector('.popup_edit-profile') 
 const popupCloseButton = document.querySelector('.popup__close') 
 const popupCloseMestoButton = document.querySelector('.popup__close_mesto') 
-const popupSave = document.querySelector('.popup__save') 
-const popupEditProfileForm = document.querySelector('.popup__form') 
+const popupEditSaveButton = document.querySelector('.popup__save_edit-profile')
+const popupMestoSaveButton = document.querySelector('.popup__save_mesto') 
+const popupEditProfileForm = document.querySelector('.popup__form_edit-profile') 
 const profileName = document.querySelector('.profile__name') 
 const profileProfession = document.querySelector('.profile__profession') 
 const nameInput = document.getElementById('name') 
@@ -11,23 +12,17 @@ const professionInput = document.getElementById('profession')
 const addMestoOpenPopupButton = document.querySelector('.profile__add-button') 
 const popupAddCard = document.querySelector('.popup_mesto') 
 const photoGrid = document.querySelector('.photo-grid') 
-const addButton = document.querySelector('.profile__add-button') 
 const template = document.querySelector('.item__template').content 
 const placeInput = document.getElementById('place') 
 const imageInput = document.getElementById('image') 
 const popupFormMesto = document.querySelector('.popup__form_mesto') 
-const popupSaveMesto = document.querySelector('.popup-mesto__save')
 const popupView = document.querySelector('.popup-image')
 const imagePopupView = document.querySelector('.popup-image__picture') 
 const imageSign = document.querySelector('.popup-image__sign')
 
 function openPopup(popupEditProfile) {
   popupEditProfile.classList.add('popup_opened')
-  let form = popupEditProfile.querySelector('.popup__form')
-  let button = popupEditProfile.querySelector('.popup__save')
-  checkButtonValidity({inactiveButtonClass: 'popup__save_error'}, form, button)
   document.addEventListener('keydown', closeByEscape)
-  popupEditProfile.reset()
 } 
 
 function closePopup(popupEditProfile) { 
@@ -36,7 +31,7 @@ function closePopup(popupEditProfile) {
 }
 
 function openPopupImage(evt) { 
-  popupView.classList.add('popup_opened')
+  openPopup(popupView)
   document.addEventListener('keydown', closeByEscape)
   imagePopupView.src = evt.target.src 
   imagePopupView.alt = evt.target.alt 
@@ -80,11 +75,8 @@ function render() {
   })
 } 
 
-function submitFormCard(evt) { 
+function submitFormCard(evt) {
   evt.preventDefault()
-  let form = popupEditProfile.querySelector('.popup__form')
-  let button = popupEditProfile.querySelector('.popup__save')
-  checkButtonValidity({inactiveButtonClass: 'popup__save_error'}, form, button)
   photoGrid.prepend(createCard([placeInput.value], [imageInput.value]))
   closePopup(popupAddCard) 
   popupFormMesto.reset() 
@@ -95,11 +87,9 @@ popups.forEach((popup) => {
 popup.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
     closePopup(popup)
-    popupFormMesto.reset()
   }
   if (evt.target.classList.contains('popup__close')) {
     closePopup(popup)
-    popupFormMesto.reset()
    }
  })
 })
@@ -112,16 +102,18 @@ function closeByEscape(evt) {
   }
 }
 
-profileInfoOpenPopupButton.addEventListener('click', function () { 
+profileInfoOpenPopupButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent 
-  professionInput.value = profileProfession.textContent 
+  professionInput.value = profileProfession.textContent
   openPopup(popupEditProfile);
+  checkButtonValidity({inactiveButtonClass:'popup__save_error'}, popupEditProfileForm, popupEditSaveButton)
 }) 
 
 addMestoOpenPopupButton.addEventListener('click', function () {
   openPopup(popupAddCard);
-}) 
-
+  checkButtonValidity({inactiveButtonClass:'popup__save_error'}, popupFormMesto, popupMestoSaveButton)
+  popupFormMesto.reset()
+})
 
 popupEditProfileForm.addEventListener('submit', submitFormUsersData)
 

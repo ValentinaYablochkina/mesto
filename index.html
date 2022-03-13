@@ -31,17 +31,17 @@
   <footer class="footer">
     <p class="footer__text">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
-      <form class="popup__form"  name="form" novalidate>
+      <form class="popup__form popup__form_edit-profile"  name="form" novalidate>
         <input type="text" class="popup__text" required minlength="2" maxlength="40" id="name" placeholder="Имя" value="Жак-Ив Кусто" name="Name">
         <span id="error-name" class="error"></span>
         <input type="text" class="popup__text" required minlength="2" maxlength="200" id="profession" placeholder="Профессиональная деятельность" 
           value="Исследователь океана" name="Profession">
         <span id="error-profession" class="error"></span>
-        <button class="popup__save" type="submit">Сохранить</button>
+        <button class="popup__save popup__save_edit-profile" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -54,7 +54,7 @@
         <span id="error-place" class="error"></span>
         <input type="url" class="popup__text" required id="image" placeholder="Ссылка на картинку" name="image" value="">
         <span id="error-image" class="error"></span>
-        <button class="popup__save" type="submit">Создать</button>
+        <button class="popup__save popup__save_mesto" type="submit">Создать</button>
       </form>
     </div>
   </div>
