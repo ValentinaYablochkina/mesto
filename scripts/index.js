@@ -22,17 +22,10 @@ const validatorConfig = {
   errorClass: 'error'
 };
 
-const editProfileValidator = new FormValidator(validatorConfig, popupEditProfileForm)
-const addCardValidator = new FormValidator(validatorConfig, popupFormMesto)
-addCardValidator.enableValidation()
-editProfileValidator.enableValidation()
 
 function closePopup(popupEditProfile) { 
   popupEditProfile.classList.remove('popup_opened')
   document.removeEventListener('keydown', closeByEscape)
-  addCardValidator._hideInputError(placeInput)
-  addCardValidator._hideInputError(imageInput)
-  popupFormMesto.reset()
 }
 
 function closeByEscape(evt) {
@@ -47,6 +40,18 @@ initialCards.forEach((item) => {
   const cardElement = card.generateCard();
   photoGrid.prepend(cardElement) 
 })
+
+function submitFormUsersData(evt) {  
+
+  evt.preventDefault()  
+
+  profileName.textContent = nameInput.value  
+
+  profileProfession.textContent = professionInput.value  
+
+  closePopup(popupEditProfile) 
+
+}  
 
 function submitFormCard(evt) {
   evt.preventDefault()
@@ -78,18 +83,26 @@ popup.addEventListener('click', (evt) => {
 profileInfoOpenPopupButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent 
   professionInput.value = profileProfession.textContent
+  editProfileValidator.resetValidation() 
   openPopup(popupEditProfile);
-  editProfileValidator._checkButtonValidity()
-  editProfileValidator._checkInputValidity(nameInput, professionInput)
 }) 
 
 addMestoOpenPopupButton.addEventListener('click', function () {
-  openPopup(popupAddCard);
-  addCardValidator._checkButtonValidity()
+  popupFormMesto.reset()
+  addCardValidator.resetValidation() 
+  openPopup(popupAddCard)
 })
 
 
-popupFormMesto.addEventListener('submit', submitFormCard) 
+
+popupEditProfileForm.addEventListener('submit', submitFormUsersData) 
+
+popupFormMesto.addEventListener('submit', submitFormCard)
+
+const editProfileValidator = new FormValidator(validatorConfig, popupEditProfileForm)
+const addCardValidator = new FormValidator(validatorConfig, popupFormMesto)
+addCardValidator.enableValidation()
+editProfileValidator.enableValidation()
 
 
 import {Card} from './Card.js'

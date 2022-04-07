@@ -62,7 +62,15 @@ export class FormValidator {
         } else {
           this._enableButtonSubmit()
         }
-      }  
+      }
+
+      resetValidation() {
+        this._checkButtonValidity()
+        this._inputs.forEach((input) => {
+        this._hideInputError(input)
+        }
+        )
+      }
 
     _setEventListeners() {
         this._inputs.forEach(input => {
