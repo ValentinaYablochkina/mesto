@@ -8,9 +8,7 @@ export class FormValidator {
     this._button = this._form.querySelector(
       this._settings.submitButtonSelector
     );
-    this._buttonHover = this._form.querySelector(
-      this._settings.hoverSelector
-    );
+    this._buttonHover = this._settings.hoverSelector
   }
 
   enableValidation() {
