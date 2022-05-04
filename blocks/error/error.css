@@ -1,0 +1,11 @@
+.error {
+    color: red;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 36px;
+    max-width: 358px;
+    z-index: 5;
+}

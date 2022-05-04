@@ -1,0 +1,17 @@
+.photo-grid__like {
+  min-width: 22px;
+  min-height: 19px;
+  background-image: url(../../../images/heart.svg);
+  background-size: auto;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+.photo-grid__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
