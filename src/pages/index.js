@@ -22,12 +22,6 @@ import { profileInfoOpenPopupButton,
   professionInput
 } from '../components/Constants.js'
 
-const avatarImage = new URL('../images/Avatar.png', import.meta.url)
-const logoImage = new URL('../images/logo.svg', import.meta.url)
-const startImagePage = [
-  {name:'Avatar', link: avatarImage},
-  {name:'Logo', link: logoImage}
-]
 
 const popupUsers = new Popup(popupEditProfile)
 
