@@ -20,7 +20,7 @@ import { profileInfoOpenPopupButton,
   initialCards,
   nameInput,
   professionInput
-} from '../components/Constants.js'
+} from '../utils/constants.js'
 
 
 const popupUsers = new Popup(popupEditProfile)
@@ -49,7 +49,7 @@ const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = createCard(item)
-    photoGrid.prepend(cardElement);
+    cardList.addItem(cardElement)
   }
 },
 photoGrid

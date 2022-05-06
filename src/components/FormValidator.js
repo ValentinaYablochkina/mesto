@@ -69,7 +69,7 @@ export class FormValidator {
   }
 
   resetValidation() {
-    this._checkButtonValidity();
+    this._disabledButtonSubmit();
     this._inputs.forEach((input) => {
       this._hideInputError(input);
     });
