@@ -1,0 +1,26 @@
+.profile__avatar-button {
+  position: absolute;
+  background-image: url(../../../images/Avatarpen.png);
+  width: 26px;
+  height: 26px;
+  font: inherit;
+  color: inherit;
+  box-sizing: border-box;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  visibility: hidden;
+}
+
+.profile__avatar-button:hover {
+  visibility: visible;
+}
+
+.profile__avatar-button:hover ~ .profile__avatar {
+  opacity: 0.2;
+}
+
+
+
+

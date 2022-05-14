@@ -1,12 +1,17 @@
 export class Card {
-  constructor(name, link, cardSelector, handleCardClick) {
-    this._name = name;
-    this._link = link;
+  constructor(data, cardSelector, handleCardClick, garbageCardClick, api) {
+    this._name = data.name;
+    this._link = data.link;
+    this._likes = data.likes.length;
+    this._likesId = data.likes
+    this._id = data._id
     this._cardSelector = cardSelector;
     this._element = this._getTemplate();
     this._image = this._element.querySelector('.photo-grid__image');
     this._like = this._element.querySelector('.photo-grid__like');
     this._handleCardClick = handleCardClick;
+    this._garbageCardClick = garbageCardClick;
+    this._api = api
   }
 
   _getTemplate() {
@@ -17,32 +22,88 @@ export class Card {
     return cardElement;
   }
 
-  generateCard() {
+  generateCard(myId) {
     this._setEventListeners();
+    this.isLiked(myId)
     this._image.src = this._link;
     this._element.querySelector('.photo-grid__text').textContent = this._name;
+    this._element.querySelector('.photo-grid__counter-like').textContent = this._likes;
     this._image.alt = this._name;
     return this._element;
   }
 
-  _deleteCard() {
-    this._element.remove();
-    this._element = null
+  generateUserCard(myId) {
+    this._setEventListenersUserCard();
+    this.isLiked(myId)
+    this._image.src = this._link;
+    this._element.querySelector('.photo-grid__text').textContent = this._name;
+    this._element.querySelector('.photo-grid__counter-like').textContent = this._likes;
+    this._image.alt = this._name;
+    return this._element;
   }
 
-  _addLike() {
-    this._like.classList.toggle('photo-grid__like_active');
+  isLiked(myId) {
+   const likedCard = this._likesId.find(item => item._id === myId)
+   if (likedCard) {
+    this._like.classList.add('photo-grid__like_active')
+   }
+  }
+
+  deleteCard() {
+    this._api.removeCard(this._id)
+    .then(() => {
+      this._element.remove();
+      this._element = null
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  _changeLikes(item) {
+    this._element.querySelector('.photo-grid__counter-like').textContent = item
+  }
+
+  _addLikeToCard() {
+    this._like.classList.add('photo-grid__like_active');
+    this._api.addLike(this._id)
+    .then((data) => this._changeLikes(data.likes.length))
+    .catch((err) => console.log(err))
+  }
+
+  _deleteLike() {
+    this._like.classList.remove('photo-grid__like_active');
+    this._api.deleteLike(this._id)
+    .then((data) => this._changeLikes(data.likes.length))
+    .catch((err) => console.log(err))
   }
 
   _setEventListeners() {
     this._element
       .querySelector('.photo-grid__button')
       .addEventListener("click", () => {
-        this._deleteCard();
+        this._garbageCardClick();
       });
     this._like.addEventListener('click', () => {
-      this._addLike();
+      if (this._like.classList.contains('photo-grid__like_active')) {
+        this._deleteLike()
+      } else {
+        this._addLikeToCard()
+      }
+    })
+    this._image.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link)
     });
+  }
+
+  _setEventListenersUserCard() {
+    this._like.addEventListener('click', () => {
+      if (this._like.classList.contains('photo-grid__like_active')) {
+        this._deleteLike()
+      } else {
+        this._addLikeToCard()
+      }
+    })
     this._image.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)
     });
