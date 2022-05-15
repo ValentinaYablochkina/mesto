@@ -1,28 +1,28 @@
-const errorHandler = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-} 
-
 export class Api {
     constructor({baseUrl, headers}) {
       this.baseUrl = baseUrl,
       this.headers = headers
+    }
+
+    _checkResponse(res) {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     }
   
     getInitialCards() {
       return fetch(`${this.baseUrl}/cards`, {
         headers: this.headers
       })
-        .then(errorHandler)
+        .then((res) => this._checkResponse(res))
     }
 
     getUserInfo() {
       return fetch(`${this.baseUrl}/users/me`, {
         headers: this.headers
       })
-        .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     changeProfileData(userInfo) {
@@ -34,7 +34,7 @@ export class Api {
           about: userInfo.about
         })
       })
-        .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     addNewCard(data) {
@@ -46,7 +46,7 @@ export class Api {
           link: data.link
         })
       })
-        .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     changeAvatarFoto(newAvatar) {
@@ -57,7 +57,7 @@ export class Api {
           avatar: newAvatar.link
         })
       })
-        .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     removeCard(cardId) {
@@ -65,7 +65,7 @@ export class Api {
         method: 'DELETE',
         headers: this.headers
       })
-      .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     addLike(cardId) {
@@ -73,7 +73,7 @@ export class Api {
         method: 'PUT',
         headers: this.headers
       })
-      .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 
     deleteLike(cardId) {
@@ -81,7 +81,7 @@ export class Api {
         method: 'DELETE',
         headers: this.headers
       })
-      .then(errorHandler)
+      .then((res) => this._checkResponse(res))
     }
 }
 

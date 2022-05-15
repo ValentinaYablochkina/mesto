@@ -63,10 +63,8 @@
   <div class="popup popup_delete">
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
-      <form class="popup__form popup__form_delete" name="deleteForm" novalidate>
-      <h3 class="popup__heading">Вы уверены?</h3>
-        <button class="popup__save popup__save_delete" type="submit">Да</button>
-      </form>
+        <h3 class="popup__heading">Вы уверены?</h3> 
+          <button class="popup__save popup__save_delete" type="click">Да</button>
     </div>
   </div>
   <div class="popup popup_change-foto">
@@ -74,8 +72,8 @@
       <button class="popup__close" type="button"></button>
       <h3 class="popup__heading">Обновить аватар</h3>
       <form class="popup__form popup__form_change-foto" name="avatarForm" novalidate>
-        <input type="url" class="popup__text" required placeholder="Ссылка на картинку" name="link" value="">
-        <span class="error"></span>
+        <input type="url" class="popup__text" required id="pictureAvatar" placeholder="Ссылка на картинку" name="link" value="">
+        <span id="error-pictureAvatar" class="error"></span>
         <button class="popup__save popup__save_change-foto" type="submit">Сохранить</button>
       </form>
     </div>

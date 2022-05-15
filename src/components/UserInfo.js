@@ -20,18 +20,4 @@ export class UserInfo {
     setUserAvatar(item) {
         this._avatar.src = item
     }
-
-    updateUserAvatar(avatar) {
-        this._api
-        .changeAvatarFoto(avatar)
-        .then((data) => this.setUserAvatar(data.avatar))
-        .catch((err) => {console.log(err)})
-    }
-
-    updateUserInfo(userInfo) {
-        this._api
-        .changeProfileData(userInfo)
-        .then((data) => this.setUserInfo(data))
-        .catch((err) => {console.log(err)})
-    }
 }

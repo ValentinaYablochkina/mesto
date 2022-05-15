@@ -9,6 +9,8 @@ export class Card {
     this._element = this._getTemplate();
     this._image = this._element.querySelector('.photo-grid__image');
     this._like = this._element.querySelector('.photo-grid__like');
+    this._text = this._element.querySelector('.photo-grid__text')
+    this._counterLike = this._element.querySelector('.photo-grid__counter-like')
     this._handleCardClick = handleCardClick;
     this._garbageCardClick = garbageCardClick;
     this._api = api
@@ -26,8 +28,8 @@ export class Card {
     this._setEventListeners();
     this.isLiked(myId)
     this._image.src = this._link;
-    this._element.querySelector('.photo-grid__text').textContent = this._name;
-    this._element.querySelector('.photo-grid__counter-like').textContent = this._likes;
+    this._text.textContent = this._name;
+    this._counterLike.textContent = this._likes;
     this._image.alt = this._name;
     return this._element;
   }
@@ -36,8 +38,8 @@ export class Card {
     this._setEventListenersUserCard();
     this.isLiked(myId)
     this._image.src = this._link;
-    this._element.querySelector('.photo-grid__text').textContent = this._name;
-    this._element.querySelector('.photo-grid__counter-like').textContent = this._likes;
+    this._text.textContent = this._name;
+    this._counterLike.textContent = this._likes;
     this._image.alt = this._name;
     return this._element;
   }
@@ -50,31 +52,25 @@ export class Card {
   }
 
   deleteCard() {
-    this._api.removeCard(this._id)
-    .then(() => {
-      this._element.remove();
+      this._element.remove(); 
       this._element = null
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
+  } 
 
   _changeLikes(item) {
-    this._element.querySelector('.photo-grid__counter-like').textContent = item
+    this._counterLike.textContent = item
   }
 
   _addLikeToCard() {
-    this._like.classList.add('photo-grid__like_active');
     this._api.addLike(this._id)
-    .then((data) => this._changeLikes(data.likes.length))
+    .then((data) =>
+    this._changeLikes(data.likes.length) || this._like.classList.add('photo-grid__like_active'))
     .catch((err) => console.log(err))
   }
 
   _deleteLike() {
-    this._like.classList.remove('photo-grid__like_active');
     this._api.deleteLike(this._id)
-    .then((data) => this._changeLikes(data.likes.length))
+    .then((data) =>
+    this._changeLikes(data.likes.length) || this._like.classList.remove('photo-grid__like_active'))
     .catch((err) => console.log(err))
   }
 
@@ -82,7 +78,7 @@ export class Card {
     this._element
       .querySelector('.photo-grid__button')
       .addEventListener("click", () => {
-        this._garbageCardClick();
+        this._garbageCardClick(this, this._id)
       });
     this._like.addEventListener('click', () => {
       if (this._like.classList.contains('photo-grid__like_active')) {
