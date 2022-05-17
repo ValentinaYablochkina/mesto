@@ -83,14 +83,7 @@ const popupNewUserInfo = new PopupWithForm({
   }
 })
 
-const popupDeleteCardForm = new PopupDeleteCard({
-  selector: popupDeleteCardWindow,
-  handleBtnSubmit: (card, cardId) => {
-    api.removeCard(cardId)
-    .then(() => card.deleteCard() || popupDeleteCardForm.close())
-    .catch((err) => console.log(err))
-  }
-})
+const popupDeleteCardForm = new PopupDeleteCard(popupDeleteCardWindow)
 
 const popupNewCardForm = new PopupWithForm({
   selector: popupAddCard,
@@ -117,7 +110,15 @@ const popupNewUserAvatar = new PopupWithForm({
 
 
 function createCard(data, cardSelector, myId) {
-  const card = new Card(data, cardSelector, handleCardClick, garbageCardClick, api);
+  const card = new Card({data, cardSelector, 
+    handleCardClick: (name, link) => {
+      popupImageOpen.open(name, link)
+    },
+    garbageCardClick: (card) => {
+      popupDeleteCardForm.open()
+      popupDeleteCardForm.callback(function() {handleBtnSubmit(card)})
+    },
+    api});
   if (myId === data.owner._id) {
   const cardElement = card.generateCard(myId)
   return cardElement;
@@ -127,13 +128,16 @@ function createCard(data, cardSelector, myId) {
   }
 } 
 
-function handleCardClick(name, link) {
-  popupImageOpen.open(name, link)
-}
 
-function garbageCardClick(card, cardId) {
+
+/*function garbageCardClick() {
   popupDeleteCardForm.open()
-  popupDeleteCardForm.setEventListeners(card, cardId)
+}*/
+
+function handleBtnSubmit(item) {
+  api.removeCard(item._id) 
+  .then(() => item.deleteCard() || popupDeleteCardForm.close()) 
+  .catch((err) => console.log(err))
 }
 
 function userDataPage() {
@@ -164,6 +168,11 @@ popupNewCardForm.setEventListeners()
 popupNewUserInfo.setEventListeners()
 
 popupNewUserAvatar.setEventListeners()
+
+popupImageOpen.setEventListeners()
+
+popupDeleteCardForm.setEventListeners()
+
 
 const formValidators = {}
 const enableValidation = (config) => {
